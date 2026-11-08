@@ -1,0 +1,152 @@
+<html>
+    <title> малекула </title>
+    <style>
+        canvas {
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+
+    <input type="text" id="number">
+    <p>на сколько градусов нужно повернуть</p>
+    <button id="btn">Подтвердить</button>
+
+    <input type="text" id="scaleX">
+    <p>масштаб по X</p>
+
+    <input type="text" id="scaleY">
+    <p>масштаб по Y</p>
+    <button id="btnScale">Масштаб</button>
+
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script>
+        // ---------- КЛАСС: одна буква ----------
+        class Letter {
+            constructor(name, draw) {
+                this.name = name;   // имя буквы ("M", "A", ...)
+                this.drawFn = draw; // функция, которая её рисует
+            }
+
+            // рисует букву в позиции (x, y)
+            render(ctx, x, y) {
+                this.drawFn(ctx, x, y);
+            }
+        }
+
+        // ---------- КЛАСС: слово ----------
+        class Word {
+            constructor(text) {
+                this.text = text;     // само слово ("matvey")
+                this.letters = [];    // массив объектов Letter
+                this.deg = 0;         // угол поворота
+                this.scaleX = 1;      // масштаб по X
+                this.scaleY = 1;      // масштаб по Y
+                this.step = 70;       // шаг между буквами
+            }
+
+            // добавить букву (объект Letter)
+            add(letter) {
+                this.letters.push(letter);
+            }
+
+            // рисует всё слово на canvas
+            render(ctx, canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+
+                // центрируем и поворачиваем
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate(this.deg * Math.PI / 180);
+                ctx.scale(this.scaleX, this.scaleY);
+
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = "black";
+                ctx.lineCap = "round";
+
+                // стартовая позиция — чтобы слово было по центру
+                let startX = -(this.letters.length - 1) * this.step / 2;
+                let startY = -40;
+
+                // рисуем каждую букву со сдвигом
+                for (let i = 0; i < this.letters.length; i++) {
+                    this.letters[i].render(ctx, startX + i * this.step, startY);
+                }
+
+                ctx.restore();
+            }
+        }
+
+        // ---------- вспомогательная функция — палка ----------
+        function stick(ctx, x1, y1, x2, y2) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        // ---------- создаём буквы ----------
+        let M = new Letter("M", (ctx, x, y) => {
+            stick(ctx, x,      y + 80, x,      y);
+            stick(ctx, x,      y,      x + 30, y + 80);
+            stick(ctx, x + 30, y + 80, x + 60, y);
+            stick(ctx, x + 60, y,      x + 60, y + 80);
+        });
+
+        let A = new Letter("A", (ctx, x, y) => {
+            stick(ctx, x,      y + 80, x + 30, y);
+            stick(ctx, x + 30, y,      x + 60, y + 80);
+            stick(ctx, x,      y + 50, x + 60, y + 50);
+        });
+
+        let T = new Letter("T", (ctx, x, y) => {
+            stick(ctx, x,      y,      x + 60, y);
+            stick(ctx, x + 30, y,      x + 30, y + 80);
+        });
+
+        let V = new Letter("V", (ctx, x, y) => {
+            stick(ctx, x,      y,      x + 30, y + 80);
+            stick(ctx, x + 60, y,      x + 30, y + 80);
+        });
+
+        let E = new Letter("E", (ctx, x, y) => {
+            stick(ctx, x,      y,      x,      y + 80);
+            stick(ctx, x,      y,      x + 50, y);
+            stick(ctx, x,      y + 40, x + 40, y + 40);
+            stick(ctx, x,      y + 80, x + 50, y + 80);
+        });
+
+        let Y = new Letter("Y", (ctx, x, y) => {
+            stick(ctx, x,      y,      x + 30, y + 40);
+            stick(ctx, x + 60, y,      x + 30, y + 40);
+            stick(ctx, x + 30, y + 40, x + 30, y + 80);
+        });
+
+        // ---------- создаём слово ----------
+        let word = new Word("matvey");
+        word.add(M);
+        word.add(A);
+        word.add(T);
+        word.add(V);
+        word.add(E);
+        word.add(Y);
+
+        // ---------- canvas ----------
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        word.render(ctx, canvas);   // первая отрисовка
+
+        // ---------- кнопки ----------
+        btn.onclick = function() {
+            word.deg = parseInt(number.value);
+            word.render(ctx, canvas);
+        }
+
+        btnScale.onclick = function() {
+            word.scaleX = parseFloat(scaleX.value);
+            word.scaleY = parseFloat(scaleY.value);
+            word.render(ctx, canvas);
+        }
+    </script>
+</html>

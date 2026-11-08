@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(208, 217, 225);
+    color: black;
+}
+
+h1 {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+h2 {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+p {
+    margin-bottom: 45px;
+    margin-top: 0;
+}
+
+section {
+    margin-bottom: 30px;
+}

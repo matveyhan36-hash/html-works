@@ -1,0 +1,221 @@
+<html>
+<style>
+    #wsw {
+        width: 500px;
+        height: 500px;
+    }
+</style>
+<body>
+
+    <canvas id="wsw" width="500px" height="500px"> </canvas>
+
+    <script>
+
+        const obj = document.getElementById("wsw");
+        const tx  = obj.getContext("2d");        
+        tx.strokeStyle = "black";  
+        tx.beginPath();
+        // крыша
+        tx.beginPath();
+        tx.moveTo(100, 150);
+        tx.lineTo(200, 100);
+        tx.lineTo(300, 150);
+        tx.stroke();
+
+        // труба
+        tx.beginPath();
+        tx.moveTo(240, 80);   
+        tx.lineTo(270, 80);    
+        tx.lineTo(270, 135);   
+        tx.lineTo(240, 120);  
+        tx.closePath();
+        tx.stroke();
+
+        // стены
+        tx.beginPath();
+        tx.moveTo(100, 150);
+        tx.lineTo(100, 350);
+        tx.lineTo(300, 350);
+        tx.lineTo(300, 150);
+        tx.stroke();
+
+        // дверь
+        tx.beginPath();
+        tx.moveTo(215, 350);
+        tx.lineTo(215, 260);
+        tx.lineTo(270, 260);
+        tx.lineTo(270, 350);
+        tx.stroke();
+
+        // окно
+        tx.beginPath();
+        tx.moveTo(130, 200);
+        tx.lineTo(170, 200);
+        tx.lineTo(170, 250);
+        tx.lineTo(130, 250);
+        tx.closePath();
+        tx.stroke();
+
+        // вертикальная полоска
+        tx.beginPath();
+        tx.moveTo(150, 200);
+        tx.lineTo(150, 250);
+        tx.stroke();
+
+        // горизонтальная полоска
+        tx.beginPath();
+        tx.moveTo(130, 217);
+        tx.lineTo(170, 217);
+        tx.stroke();
+
+        // М
+        tx.beginPath();
+        tx.moveTo(50, 400);
+        tx.lineTo(50, 360);
+        tx.lineTo(65, 385);
+        tx.lineTo(80, 360);
+        tx.lineTo(80, 400);
+        tx.stroke();
+
+        // А
+        tx.beginPath();
+        tx.moveTo(100, 400);
+        tx.lineTo(115, 360);
+        tx.lineTo(130, 400);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(107, 385);
+        tx.lineTo(123, 385);
+        tx.stroke();
+
+        // Т
+        tx.beginPath();
+        tx.moveTo(145, 360);
+        tx.lineTo(185, 360);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(165, 360);
+        tx.lineTo(165, 400);
+        tx.stroke();
+
+        // В
+        tx.beginPath();
+        tx.moveTo(200, 360);
+        tx.lineTo(200, 400);
+        tx.lineTo(220, 400);
+        tx.lineTo(225, 390);
+        tx.lineTo(220, 380);
+        tx.lineTo(200, 380);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(220, 380);
+        tx.lineTo(228, 370);
+        tx.lineTo(220, 360);
+        tx.lineTo(200, 360);
+        tx.stroke();
+
+        //Е
+        tx.beginPath();
+        tx.moveTo(245, 360);
+        tx.lineTo(245, 400);
+        tx.lineTo(275, 400);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(245, 380);
+        tx.lineTo(270, 380);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(245, 360);
+        tx.lineTo(275, 360);
+        tx.stroke();
+
+         // Й
+        tx.beginPath();
+        tx.moveTo(290, 360);
+        tx.lineTo(290, 400);
+        tx.moveTo(315, 360);
+        tx.lineTo(315, 400);
+        tx.moveTo(290, 400);
+        tx.lineTo(315, 360);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(296, 348);
+        tx.lineTo(302, 356);
+        tx.lineTo(308, 348);
+        tx.stroke();
+
+        // К
+        tx.beginPath();
+        tx.moveTo(20, 440); 
+        tx.lineTo(20, 470); 
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(20, 455); 
+        tx.lineTo(35, 440);   
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(20, 455);
+        tx.lineTo(35, 470);   
+        tx.stroke();
+
+        // Р
+        tx.beginPath();
+        tx.moveTo(45, 440);
+        tx.lineTo(45, 470);
+        tx.stroke();
+        tx.beginPath();
+        tx.moveTo(45, 440);
+        tx.lineTo(62, 440);
+        tx.lineTo(62, 455);
+        tx.lineTo(45, 455);
+        tx.stroke();
+
+        //Ы 
+        tx.beginPath();
+        tx.moveTo(72, 440);     
+        tx.lineTo(72, 470);      
+        tx.lineTo(90, 470);       
+        tx.lineTo(90, 455);       
+        tx.lineTo(72, 455);      
+        tx.moveTo(100, 440);      
+        tx.lineTo(100, 470);      
+        tx.stroke();
+
+        // Л 
+        tx.beginPath();
+        tx.moveTo(105, 470);
+        tx.lineTo(115, 440);
+        tx.lineTo(130, 470);
+        tx.stroke();
+
+        // О 
+        tx.beginPath();
+        tx.moveTo(140, 440);
+        tx.lineTo(160, 440);
+        tx.lineTo(160, 470);
+        tx.lineTo(140, 470);
+        tx.lineTo(140, 440);
+        tx.stroke();
+
+
+        // В
+        tx.beginPath();
+        tx.moveTo(170, 440); 
+        tx.lineTo(170, 470);
+        tx.lineTo(188, 470); 
+        tx.lineTo(192, 462);
+        tx.lineTo(188, 455); 
+        tx.lineTo(170, 455);
+        tx.moveTo(188, 455); 
+        tx.lineTo(195, 447);
+        tx.lineTo(188, 440); 
+        tx.lineTo(170, 440);
+        tx.stroke();
+
+
+
+
+    </script>
+
+</body>
+</html>
